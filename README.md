@@ -2,6 +2,8 @@
 
 This is a simple script and Flask app that allows you to download YouTube videos using the command-line tool yt-dlp.
 
+Typing yt-dlp.py and the youtube link everytime you want to download a video. This method can be a lot qucker.
+
 ## Installation
 
 1. Clone this repository: `git clone https://github.com/spongly/youtube.git`
