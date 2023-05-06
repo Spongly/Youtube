@@ -1,0 +1,60 @@
+// ==UserScript==
+// @name         Download YouTube Video
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Downloads YouTube video using yt-dlp
+// @author       Your Name
+// @match        https://www.youtube.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Add a download button to the video player
+    const addButton = () => {
+        const videoPlayer = document.querySelector('video');
+        if (!videoPlayer) {
+            return;
+        }
+
+        const button = document.createElement('button');
+    button.innerText = 'Download';
+    button.style.position = 'absolute';
+    button.style.top = '10px';
+    button.style.right = '10px';
+    button.style.padding = '8px 16px';
+    button.style.border = 'none';
+    button.style.borderRadius = '4px';
+    button.style.background = '#4CAF50';
+    button.style.color = 'white';
+    button.style.cursor = 'pointer';
+    button.style.fontWeight = 'bold';
+    button.style.boxShadow = '2px 2px 4px rgba(0, 0, 0, 0.2)';
+        button.onclick = () => {
+            const videoUrl = window.location.href;
+            const command = `yt-dlp ${videoUrl}`;
+            const process = window.open(`http://localhost:8080/?command=${encodeURIComponent(command)}`);
+            process.addEventListener('load', () => {
+                process.close();
+            });
+        };
+
+        videoPlayer.parentElement.appendChild(button);
+    };
+
+    // Wait for the video player to load before adding the button
+    const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            if (mutation.type === 'childList') {
+                for (const node of mutation.addedNodes) {
+                    if (node instanceof HTMLVideoElement) {
+                        addButton();
+                    }
+                }
+            }
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+})();
