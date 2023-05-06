@@ -4,9 +4,12 @@ This is a simple script and Flask app that allows you to download YouTube videos
 
 ## Installation
 
-1. Clone this repository: `git clone https://github.com/your-username/download-youtube-video.git`
+1. Clone this repository: `git clone https://github.com/spongly/youtube.git`
 2. Install the dependencies: `pip install flask yt-dlp`
-3. Run the Flask app: `python app.py`
+3. Run the Flask app: `python flask.py`
+4. Install the Tampermonkey extenction: `https://www.tampermonkey.net/`
+5. Click on the Tampermonkey icon and click on Create a new script
+6. Paste the script in script.txt into Tampermonkey
 
 ## Usage
 
