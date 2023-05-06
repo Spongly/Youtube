@@ -1,2 +1,18 @@
-# youtube
-Download YouTube videos using a Tampermonkey script and a Flask server
+# Download YouTube Video
+
+This is a simple script and Flask app that allows you to download YouTube videos using the command-line tool yt-dlp.
+
+## Installation
+
+1. Clone this repository: `git clone https://github.com/your-username/download-youtube-video.git`
+2. Install the dependencies: `pip install flask yt-dlp`
+3. Run the Flask app: `python app.py`
+
+## Usage
+
+1. Go to a YouTube video you want to download
+2. Wait for the video player to load
+3. Click the "Download" button that appears on the player
+4. The video will be downloaded to your computer
+
+Note: You may need to modify the port number in the Flask app if it conflicts with another application running on your computer.
